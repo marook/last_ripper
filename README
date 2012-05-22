@@ -1,0 +1,47 @@
+last ripper
+
+1) Introduction
+2) Requirements
+3) Usage
+4) Execute tests
+
+
+---------------------------------------------------------------------------
+Introduction
+
+last_ripper reads your last.fm top tracks and looks them up on youtube. If
+last_ripper finds videos for the artist and track name it generate a Makefile
+for downloading these videos and converting them to MP3.
+
+
+---------------------------------------------------------------------------
+Requirements
+
+You need the following software in order to user last_ripper:
+* python 2.7
+* youtube-dl - https://github.com/rg3/youtube-dl
+* GNU make
+
+
+---------------------------------------------------------------------------
+Usage
+
+First you have to get a last.fm API key and secret. You can do this here:
+http://www.lastfm.de/api/account
+
+Launch last_ripper with your last.fm API key, secret and last.fm user name:
+$ python last_ripper.py --api-key 'your_lastfm_api_key' --api-secret 'you_lastfm_api_secret' user1
+
+last_ripper will generate a Makefile for downloading corresponding youtube
+videos. You can start the download using make:
+
+$ make -k -j 4 -f Makefile.user1
+
+For further usage details see the last_ripper help:
+$ python last_ripper --help
+
+
+---------------------------------------------------------------------------
+Execute tests
+
+$ make test
